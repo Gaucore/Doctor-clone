@@ -48,11 +48,6 @@ const upload = multer({
 // Serve static files from the uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/apollo-doctors-clone')
-  .then(() => console.log('MongoDB connected successfully'))
-  .catch(err => console.error('MongoDB connection error:', err));
-
 // Define Doctor Schema
 const doctorSchema = new mongoose.Schema(
   {
@@ -106,6 +101,18 @@ const doctorSchema = new mongoose.Schema(
   }
 );
 
+// Connect to MongoDB Atlas
+console.log('Connecting to MongoDB Atlas...');
+
+// MongoDB Atlas connection string with password
+const MONGODB_URI = 'mongodb+srv://Doctor:pUouBs0rvXo4LSXY@doctor-clone.ck24rty.mongodb.net/apollo-doctors-clone?retryWrites=true&w=majority&appName=Doctor-Clone';
+
+// Connect to MongoDB
+mongoose.connect(MONGODB_URI)
+  .then(() => console.log('MongoDB Atlas connected successfully'))
+  .catch(err => console.error('MongoDB Atlas connection error:', err));
+
+// Create the Doctor model using mongoose
 const Doctor = mongoose.model('Doctor', doctorSchema);
 
 // Routes
@@ -207,7 +214,7 @@ app.post('/api/doctors', async (req, res) => {
   }
 });
 
-app.get('/api/doctors/filter-options', async (req, res) => {
+app.get('/api/doctors/filter-options', async (_req, res) => {
   try {
     // Get unique specializations
     const specializations = await Doctor.distinct('specialization');
@@ -256,7 +263,7 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
 });
 
 // Health check route
-app.get('/health', (req, res) => {
+app.get('/health', (_req, res) => {
   res.status(200).json({ status: 'ok', message: 'Server is running' });
 });
 
