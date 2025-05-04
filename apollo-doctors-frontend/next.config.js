@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  env: {
+    NEXT_PUBLIC_API_URL: 'https://doctor-clone-1-o2jl.onrender.com/api',
+    NEXT_PUBLIC_METADATA_BASE_URL: 'https://doctor-clone-1-o2jl.onrender.com',
+  },
   images: {
     remotePatterns: [
       {

@@ -11,14 +11,15 @@ export const metadata: Metadata = {
   title: 'Apollo Doctors Clone',
   description: 'A clone of Apollo 247 doctors listing page',
   keywords: 'doctors, healthcare, apollo, medical, consultation',
+  metadataBase: new URL('https://doctor-clone-1-o2jl.onrender.com'),
   openGraph: {
     title: 'Apollo Doctors Clone',
     description: 'A clone of Apollo 247 doctors listing page',
-    url: 'https://apollo-doctors-clone.vercel.app',
+    url: 'https://doctor-clone-1-o2jl.onrender.com',
     siteName: 'Apollo Doctors Clone',
     images: [
       {
-        url: 'https://apollo-doctors-clone.vercel.app/og-image.jpg',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Apollo Doctors Clone',
