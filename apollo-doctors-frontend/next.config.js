@@ -22,6 +22,10 @@ const nextConfig = {
     ],
     unoptimized: true, // This will bypass the Image Optimization API
   },
+  // Add this for better deployment compatibility
+  swcMinify: true,
+  // Ensure the app works with or without trailing slashes
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;
